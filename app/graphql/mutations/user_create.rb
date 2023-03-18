@@ -7,8 +7,8 @@ module Mutations
     field :user, Types::UserType, null: false
 
     argument :email, String, required: true
-    argument :first_name, String
-    argument :last_name, String
+    argument :first_name, String, required: false
+    argument :last_name, String, required: false
 
     def resolve(**kwargs)
       user = ::User.new(**kwargs)
