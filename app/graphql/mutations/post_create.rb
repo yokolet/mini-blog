@@ -11,6 +11,7 @@ module Mutations
     argument :content, String, required: true
 
     def resolve(**kwargs)
+      authenticate!
       post = ::Post.new(**kwargs)
       raise GraphQL::ExecutionError.new "Error creating post", extensions: post.errors.to_hash unless post.save
 
